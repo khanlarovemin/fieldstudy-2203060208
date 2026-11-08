@@ -4,9 +4,9 @@ SFWE475 / CPRG201, Assignment 2. An evidence-based audit of one real, public web
 
 | | |
 |---|---|
-| **Site address** | TODO: https://... |
-| **Organisation** | TODO: name of the organisation that runs the site |
-| **Main purpose of the site** | TODO: one sentence, e.g. "Lets residents find council services, opening hours and news." |
+| **Site address** | https://www.101evler.com |
+| **Organisation** | 101evler, an online property listing portal in North Cyprus |
+| **Main purpose of the site** | Lets people search properties for sale and rent in North Cyprus and contact the estate agents who list them. |
 | **Audit date(s)** | TODO: e.g. 9 and 10 November 2026 |
 | **Browser** | TODO: e.g. Google Chrome 1xx on macOS |
 | **Tier attempted** | Core |
