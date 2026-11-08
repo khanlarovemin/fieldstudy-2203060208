@@ -32,11 +32,11 @@ Typing `http://101evler.com` ended on `https://www.101evler.com/`. The Network p
 | Item | Value |
 |---|---|
 | Document request | Method `GET` · Status `200 OK` · Content-Type `text/html; charset=UTF-8` |
-| Requests on reload | 99 (cache disabled) |
-| Transferred / resources | 7.2 MB transferred, 12.1 MB resources · DOMContentLoaded 1.59 s · Load 1.97 s |
-| Example Fetch/XHR request | [[TODO: path and what it loads, or "none found"]] |
+| Requests on reload | 92 (private window, cache disabled) |
+| Transferred / resources | 2.5 MB transferred, 7.3 MB resources · DOMContentLoaded 1.74 s · Load 3.55 s |
+| Example Fetch/XHR request | `collect?v=2&tid=G-D8562466R8…`, which sends visit statistics to Google Analytics (8 such background requests in total) |
 
-The home page is an ordinary `GET` answered with `200` and HTML. It is compressed with Brotli (`content-encoding: br`) and delivered through Cloudflare (`server: cloudflare`). With the cache disabled, one visit made 99 requests and downloaded 7.2 MB (12.1 MB once unpacked). On my fast connection the page was ready in under 2 seconds. For a first visit on mobile data, however, 7.2 MB is heavy. Only about 1.1 MB of it came from the 34 images, so most of the weight is elsewhere: [[TODO: the largest files from the Size sort]]. [A3]
+The home page is an ordinary `GET` answered with `200` and HTML. It is compressed with Brotli (`content-encoding: br`) and delivered through Cloudflare (`server: cloudflare`). In a private window with the cache disabled, one visit made 92 requests and downloaded 2.5 MB (7.3 MB once unpacked). The page was readable after 1.74 s and fully loaded after 3.55 s. My first measurement in a normal window showed 7.2 MB, but its two largest files (2.9 MB and 1.6 MB, "downloaded" in 3–4 ms) came from one of my browser extensions, not from the site. This is a reminder to audit in a clean window. Sorted by size, the heaviest files are not the property photos. They are advertising and tracking scripts: Google's ad script (`pubads_impl.js`, 221 kB), Google Analytics and Tag Manager (203 kB and 167 kB) and the Facebook pixel (114 kB and 112 kB). Together they make up about a third of the download, so on mobile data roughly a third of every first visit goes on code that does not help the visitor find a home. [A3]
 
 ### A4. A page that does not exist
 
