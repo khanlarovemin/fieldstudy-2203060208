@@ -1,0 +1,119 @@
+@page {
+  size: A4;
+  margin: 15mm 16mm;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+  font-size: 9.8pt;
+  line-height: 1.38;
+  color: #1b1b1b;
+}
+
+h1 {
+  font-size: 16pt;
+  margin: 0 0 6pt;
+}
+
+h2 {
+  font-size: 12.5pt;
+  margin: 13pt 0 5pt;
+  padding-bottom: 2pt;
+  border-bottom: 1.4pt solid #c8102e;
+  break-after: avoid;
+}
+
+h3 {
+  font-size: 10.3pt;
+  margin: 9pt 0 2pt;
+  break-after: avoid;
+}
+
+h4 {
+  font-size: 10pt;
+  margin: 8pt 0 2pt;
+  break-after: avoid;
+}
+
+p {
+  margin: 0 0 5pt;
+}
+
+ul,
+ol {
+  margin: 0 0 5pt;
+  padding-left: 16pt;
+}
+
+li {
+  margin-bottom: 2pt;
+}
+
+table {
+  width: 100%;
+  margin: 3pt 0 6pt;
+  border-collapse: collapse;
+  font-size: 8.8pt;
+}
+
+th,
+td {
+  padding: 2.5pt 4pt;
+  border: 0.6pt solid #9a9a9a;
+  text-align: left;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+
+th {
+  background: #eeeeee;
+}
+
+/* Two-column key/value tables have an empty header row; hide it. */
+thead tr:has(th:empty:first-child + th:empty:last-child) {
+  display: none;
+}
+
+tr {
+  break-inside: avoid;
+}
+
+code {
+  padding: 0 2pt;
+  background: #f2f2f2;
+  font-family: Menlo, Consolas, monospace;
+  font-size: 8.2pt;
+  overflow-wrap: anywhere;
+}
+
+img {
+  max-width: 100%;
+}
+
+mark.todo {
+  background: #ffe27a;
+  color: #5a4500;
+}
+
+.page-break {
+  break-before: page;
+}
+
+/* Owner summary: one calm page, slightly larger type. */
+.owner {
+  font-size: 10.4pt;
+  line-height: 1.42;
+}
+
+.owner h1 {
+  font-size: 17pt;
+}
+
+.owner h2 {
+  border-bottom-color: #555555;
+}
