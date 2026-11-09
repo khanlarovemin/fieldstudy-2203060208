@@ -78,23 +78,23 @@ The basics are in place. Every item exists, the canonical link points to the pag
 
 ### B1. Loading state
 
-[[TODO: Network setting used and what the visitor saw at each moment (for example at 1 s, 4 s and 10 s): blank page, spinner, placeholders or partial content. When did the first useful content appear?]]
-[[TODO: How it feels for a visitor on a slow connection.]] [B1]
+I set the Performance panel to **Slow 4G** with the cache disabled and reloaded the home page. Chrome's live metrics reported a Largest Contentful Paint of **2.47 s**: the biggest element, the main `h1` heading, was on screen after about two and a half seconds. Layout shift was **0.02**, so the page hardly jumped while images arrived, and the first click responded in 24 ms. Chrome rates all three values as "good". [[TODO: one sentence from you: what did you see first while it loaded (white page, menu and heading, grey boxes?), and when did the photos appear?]]
+Because the page is built on the server (A6), a visitor on a slow connection gets the heading and menu early instead of a blank screen or a spinner. The weak point is everything after that: the 2.5 MB download (A3), a third of it advertising and tracking code, keeps the phone busy and uses mobile data long after the useful part is visible. [B1]
 
 ### B2. Empty state
 
-[[TODO: Where you searched, the exact search term, and the exact wording on screen, in quotation marks.]]
-[[TODO: Is there a clear, friendly message and a next step? How would a visitor react?]] [B2]
+I typed `99999999`, a listing number that does not exist, into the "İlan No #" (listing number) box that sits at the top of every page, and pressed Enter. The site opened `/kibris/emlak/index?property=99999999` and showed a large "404", the heading "Bu ilan artık yayında değil" ("This listing is no longer published"), the sentence "Satılmış, kiralanmış veya yayından kalkmış olabilir. Benzer ilanlara aşağıdan göz atabilirsiniz." ("It may have been sold, rented or taken down. You can browse similar listings below.") and an "Anasayfaya dön" ("Back to home page") button. Unlike the general error page in A4, the normal header and menu stay visible.
+The message is friendly and gives a next step, so the visitor is not stuck. However, the wording assumes the listing once existed. Someone who simply mistyped a number is told the home "may have been sold". They might give up on a property that is still for sale, and they are never asked to check the number. A neutral sentence such as "We could not find listing #99999999. Please check the number." would work in both cases. [B2]
 
 ### B3. Error state
 
-[[TODO: What you did while offline (search, link click) and exactly what appeared: the site's own message or the browser's error page. Is there a retry?]]
-[[TODO: What it means for a visitor with an unreliable connection.]] [B3]
+With the Network panel set to **Offline**, I clicked "Satılık" in the main menu of the home page. The site showed nothing of its own. Chrome replaced the page with its standard "no internet" page: the dinosaur, "Oynamak için boşluk tuşuna basın" ("Press space to play") and tips to check the cable, modem and Wi-Fi. The address bar already showed `/kibris/satilik-konut`, but there was no message and no retry button from 101evler.
+For a site made of ordinary pages, this is the usual behaviour, and the browser's message is at least clear. Still, a visitor on a weak mobile connection sees the page they were reading replaced by a browser game, with nothing to tell them that their search will still be there when the connection returns. A simple offline page with a "Try again" button would keep them on the site. [B3]
 
 ### B4. Form validation
 
-[[TODO: Which form, what you left empty on purpose, where the errors appeared, their exact wording, and whether your other input was kept. If the form could have been sent, write "not tested safely" and explain why.]]
-[[TODO: Is the wording useful for fixing the problem?]] [B4]
+I used the main search form on the home page, the only form that sends nothing personal. I pressed "Ara" without choosing a town, region, room type or price; only the defaults "Satılık" and "Konut" were set. No error appeared. The site opened `/kibris/satilik-konut` with "Kıbrıs Satılık Ev İlanları – 25.083 Sonuç Bulundu", that is, all 25,083 homes for sale. The forms that do have required fields (sending a message to an agent, registering, reporting a listing) would really send data, so these were **not tested safely**, as the assignment rules require.
+For a search form, this behaviour is sensible: no field is required, an empty search means "show everything", and the filter bar at the top of the results (Konut, Lokasyon, Fiyat, Alan, Detaylı Ara) lets the visitor narrow the list straight away. There is no error wording to judge, because the form never shows one. [B4]
 
 ### B5. Labels
 
@@ -110,18 +110,18 @@ The basics are in place. Every item exists, the canonical link points to the pag
 
 | Task | Keys and steps | Focus visible? | Order logical? | Keyboard trap? | Skip link? |
 |---|---|---|---|---|---|
-| [[TODO: e.g. find the opening hours]] | [[TODO: e.g. 14 × Tab, Enter, 6 × Tab]] | | | | |
+| Open the rental listings ("Kiralık") from the home page | [[TODO: N]] × Tab from the address bar, then Enter | Yes, a dark outline around "Kiralık" | [[TODO]] | [[TODO]] | [[TODO]] |
 
-[[TODO: Where you got lost or stuck, and what that means for someone who cannot use a mouse.]] [B6]
+[[TODO: after your answer]] [B6]
 
 ### B7. Automated audit (Lighthouse Accessibility)
 
 | Page | Address | Score | Top three flagged issues |
 |---|---|---|---|
-| Home | [[TODO]] | [[TODO]] | [[TODO]] |
-| [[TODO: inner page]] | [[TODO]] | [[TODO]] | [[TODO]] |
+| Home | `https://www.101evler.com/` | **74** | Images without `alt` text; search menus (`select`) without labels; links without a readable name. Also: low colour contrast, zooming blocked, no main landmark |
+| Listing #289984 | `/kibris/satilik-emlak/girne-esentepe-daire-289984.html` | **53** | Buttons, links and form fields without a name or label; images without `alt` text; ARIA attributes used wrongly (three separate warnings). Also: zooming blocked, no main landmark |
 
-[[TODO: Which flagged issue matters most to real visitors, and one thing the automated score cannot tell you.]] [B7]
+The issue that matters most to real visitors is the **unnamed controls**. On both pages, search menus, form fields, links and (on the listing page) buttons have no name a screen reader can read out. A blind visitor therefore hears only "button" or "link" and cannot search on their own or contact an agent. A second issue affects far more people: the page tells mobile browsers not to allow zooming (`maximum-scale=1`, also visible in the page source, A6). Some browsers obey this, which stops people with weak eyesight from enlarging small text such as prices. One thing the score cannot tell you is whether a person can actually finish a task. Lighthouse checks rules in the code; it does not try to search or contact an agent, and it cannot judge whether an existing label or `alt` text makes sense. It also says nothing about why the listing page, where visitors decide and get in touch, scores 21 points lower than the home page. [B7]
 
 ### B8. Link and button text
 
