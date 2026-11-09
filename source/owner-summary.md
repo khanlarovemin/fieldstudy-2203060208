@@ -2,7 +2,7 @@
 
 # Website review for 101evler
 
-[[TODO: Full name]] · 9 November 2026
+Emin Khanlarov · 9 November 2026
 
 I used www.101evler.com the way an ordinary visitor would: on a computer, on a simulated slow mobile connection, and with the keyboard only. These are the points that would help your visitors most.
 

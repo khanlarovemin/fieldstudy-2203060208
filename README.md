@@ -7,8 +7,8 @@ SFWE475 / CPRG201, Assignment 2. An evidence-based audit of one real, public web
 | **Site address** | https://www.101evler.com |
 | **Organisation** | 101evler, an online property listing portal in North Cyprus |
 | **Main purpose of the site** | Lets people search properties for sale and rent in North Cyprus and contact the estate agents who list them. |
-| **Audit date(s)** | TODO: e.g. 9 and 10 November 2026 |
-| **Browser** | TODO: e.g. Google Chrome 1xx on macOS |
+| **Audit date(s)** | 8 and 9 November 2026 |
+| **Browser** | Google Chrome 156.0.8078.80 on macOS 26.3.1 |
 | **Tier attempted** | Core |
 
 ## Deliverables
@@ -33,5 +33,8 @@ tools/build.sh stretch    # stretch/benchmark.pdf and stretch/usability-test.pdf
 ## Use of AI tools
 
 I used Claude (an AI assistant) to set up the repository structure, the report templates and the helper
-scripts in `tools/`, and to tidy the English of text I wrote. All observations, measurements, screenshots
-and findings were collected by me in my own browser.
+scripts in `tools/`, to tell me which DevTools steps to follow for each check, to write the two short Console
+snippets used in A7, B5 and B8 (they only read the open page and send nothing to the site), and to draft the
+English wording of the report and the owner summary from my screenshots, measurements and notes. All
+observations, measurements and screenshots were collected by me in my own browser, and I checked the
+statements in the report against my evidence.

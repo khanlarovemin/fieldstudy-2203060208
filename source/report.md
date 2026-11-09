@@ -4,7 +4,7 @@
 |---|---|
 | **Site** | https://www.101evler.com |
 | **Organisation** | 101evler, online property listing portal (North Cyprus) |
-| **Student** | [[TODO: Full name]] · 2203060208 |
+| **Student** | Emin Khanlarov · 2203060208 |
 | **Course** | SFWE475 / CPRG201 · Assignment 2 (Website Field Study) |
 | **Audit date and time** | 8 November 2026, 18:43–19:21 and 9 November 2026, 20:22–21:14 |
 | **Browser** | Google Chrome 156.0.8078.80 on macOS 26.3.1 (Part B and A3 in a private window) |
