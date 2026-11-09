@@ -78,7 +78,7 @@ The basics are in place. Every item exists, the canonical link points to the pag
 
 ### B1. Loading state
 
-I set the Performance panel to **Slow 4G** with the cache disabled and reloaded the home page. Chrome's live metrics reported a Largest Contentful Paint of **2.47 s**: the biggest element, the main `h1` heading, was on screen after about two and a half seconds. Layout shift was **0.02**, so the page hardly jumped while images arrived, and the first click responded in 24 ms. Chrome rates all three values as "good". While loading, I first saw a plain white screen, with no spinner, placeholder or message.
+I set the Performance panel to **Slow 4G** with the cache disabled and reloaded the home page. Chrome's live metrics reported a Largest Contentful Paint of **2.47 s**: the biggest element, the main `h1` heading, was on screen after about two and a half seconds. Layout shift was **0.02**, so the page hardly jumped while images arrived, and clicks on the page responded within 24 ms. Chrome rates all three values as "good". While loading, I first saw a plain white screen, with no spinner, placeholder or message.
 For about two and a half seconds, a visitor on a slow connection cannot tell whether the site is loading or broken, and some will press Back. Once the heading appears, the page is usable because it is built on the server (A6). Even so, the 2.5 MB download (A3), a third of it advertising and tracking code, keeps the phone busy and uses mobile data long after the useful part is visible. [B1]
 
 ### B2. Empty state
@@ -104,10 +104,10 @@ Checked on the listing page with a short Console snippet that lists every form f
 |---|---|---|---|
 | "İlan No #" search box (header of every page) | No | No label to click | Yes |
 | Contact-agent form: name, phone, e-mail, message | No | No label to click | Yes ("Ad ve Soyad", "Telefon", "E-Mail", "Mesajınız") |
-| Three drop-down menus (`chartTypeSelect`, `transactionTypeSelect`, `propertyTypeSelect`) and the note boxes (`incNote`, `usernote`) | No | No label to click | No placeholder either: no name at all |
+| Three drop-down menus (`chartTypeSelect`, `transactionTypeSelect`, `propertyTypeSelect`), the report-reason field and two note boxes (`incNote`, `usernote`) | No | No label to click | No placeholder either: no name at all |
 | "Danışman Girişi" tick box (hidden login pop-up) | Yes | Yes, label connected | No |
 
-Of the 18 fields that are not hidden, **none** has a label: 12 rely only on placeholder text and 6 have nothing at all. The only connected labels belong to the hidden login pop-up and a third-party share widget. Placeholder text vanishes as soon as the visitor starts typing. Someone checking their message before sending, or anyone with memory or attention difficulties, can no longer see what each box was for, and the light grey text is hard to read. Fields with no name at all are worse: a screen reader announces just "edit text" or "combo box", which is why Lighthouse flagged them (B7). Without labels, there is also no larger area to click, which makes small tick boxes harder for people with shaky hands. [B5]
+Of the 18 fields that are not hidden, **none** has a label: 12 rely only on placeholder text and 6 have nothing at all. The only connected labels belong to hidden login and sign-up pop-ups and a third-party share widget. Placeholder text vanishes as soon as the visitor starts typing. Someone checking their message before sending, or anyone with memory or attention difficulties, can no longer see what each box was for, and the light grey text is hard to read. Fields with no name at all are worse: a screen reader announces just "edit text" or "combo box", which is why Lighthouse flagged them (B7). Without labels, there is also no larger area to click, which makes small tick boxes harder for people with shaky hands. [B5]
 
 ### B6. Keyboard only
 
@@ -124,7 +124,7 @@ This simple task worked well. Each Tab moved one step along the menu with a clea
 | Home | `https://www.101evler.com/` | **74** | Images without `alt` text; search menus (`select`) without labels; links without a readable name. Also: low colour contrast, zooming blocked, no main landmark |
 | Listing #289984 | `/kibris/satilik-emlak/girne-esentepe-daire-289984.html` | **53** | Buttons, links and form fields without a name or label; images without `alt` text; ARIA attributes used wrongly (three separate warnings). Also: zooming blocked, no main landmark |
 
-The issue that matters most to real visitors is the **unnamed controls**. On both pages, search menus, form fields, links and (on the listing page) buttons have no name a screen reader can read out. A blind visitor therefore hears only "button" or "link" and cannot search on their own or contact an agent. A second issue affects far more people: the page tells mobile browsers not to allow zooming (`maximum-scale=1`, also visible in the page source, A6). Some browsers obey this, which stops people with weak eyesight from enlarging small text such as prices. One thing the score cannot tell you is whether a person can actually finish a task. Lighthouse checks rules in the code; it does not try to search or contact an agent, and it cannot judge whether an existing label or `alt` text makes sense. It also says nothing about why the listing page, where visitors decide and get in touch, scores 21 points lower than the home page. [B7]
+The issue that matters most to real visitors is the **unnamed controls**. On both pages, search menus, form fields, links and (on the listing page) buttons have no name a screen reader can read out. A blind visitor therefore hears only "button" or "link" and cannot search on their own or contact an agent. A second issue affects far more people: the page tells mobile browsers not to allow zooming (`maximum-scale=1`, also visible in the page source, A6). Some browsers obey this, which stops people with weak eyesight from enlarging small text such as prices. One thing the score cannot tell you is whether a person can actually finish a task. Lighthouse checks rules in the code; it does not try to search or contact an agent, and it cannot judge whether an existing label or `alt` text makes sense. Nor does it explain why the listing page, where visitors decide and get in touch, scores 21 points lower than the home page. [B7]
 
 ### B8. Link and button text
 
@@ -152,7 +152,7 @@ The same Console check found **32 visible links and buttons with no readable tex
 
 | | |
 |---|---|
-| **Problem** | None of the 18 form fields on a listing page has a label, and 32 links and buttons have no readable text. |
+| **Problem** | None of the 18 visible form fields on a listing page has a label, and 32 links and buttons have no readable text. |
 | **Evidence** | B5, B8, B7 (scores 74 and 53), A7 (four `h1` headings) |
 | **Who it affects** | Blind and partially sighted visitors using screen readers. Anyone who forgets what a field was for once the placeholder disappears. |
 | **Fix in plain words** | Give every field a visible label, every photo and logo a short description (`alt`), and every icon button a spoken name (`aria-label`). Keep one main heading per page. |
