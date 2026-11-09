@@ -6,8 +6,8 @@
 | **Organisation** | 101evler, online property listing portal (North Cyprus) |
 | **Student** | [[TODO: Full name]] · 2203060208 |
 | **Course** | SFWE475 / CPRG201 · Assignment 2 (Website Field Study) |
-| **Audit date and time** | [[TODO: e.g. 9 November 2026, 14:10–16:30]] |
-| **Browser** | [[TODO: Google Chrome version (chrome://version), macOS version]] |
+| **Audit date and time** | 8 November 2026, 18:43–19:21 and 9 November 2026, 20:22–21:14 |
+| **Browser** | Google Chrome 156.0.8078.80 on macOS 26.3.1 (Part B and A3 in a private window) |
 
 ## Part A: Under the hood
 
@@ -98,13 +98,16 @@ For a search form, this behaviour is sensible: no field is required, an empty se
 
 ### B5. Labels
 
+Checked on the listing page with a short Console snippet that lists every form field and its connected `<label>`.
+
 | Field | Visible label? | Clicking the label focuses the field? | Placeholder only? |
 |---|---|---|---|
-| [[TODO]] | | | |
-| [[TODO]] | | | |
-| [[TODO]] | | | |
+| "İlan No #" search box (header of every page) | No | No label to click | Yes |
+| Contact-agent form: name, phone, e-mail, message | No | No label to click | Yes ("Ad ve Soyad", "Telefon", "E-Mail", "Mesajınız") |
+| Three drop-down menus (`chartTypeSelect`, `transactionTypeSelect`, `propertyTypeSelect`) and the note boxes (`incNote`, `usernote`) | No | No label to click | No placeholder either: no name at all |
+| "Danışman Girişi" tick box (hidden login pop-up) | Yes | Yes, label connected | No |
 
-[[TODO: Who is affected by missing or unconnected labels, and how.]] [B5]
+Of the 18 fields that are not hidden, **none** has a label: 12 rely only on placeholder text and 6 have nothing at all. The only connected labels belong to the hidden login pop-up and a third-party share widget. Placeholder text vanishes as soon as the visitor starts typing. Someone checking their message before sending, or anyone with memory or attention difficulties, can no longer see what each box was for, and the light grey text is hard to read. Fields with no name at all are worse: a screen reader announces just "edit text" or "combo box", which is why Lighthouse flagged them (B7). Without labels, there is also no larger area to click, which makes small tick boxes harder for people with shaky hands. [B5]
 
 ### B6. Keyboard only
 
@@ -112,7 +115,7 @@ For a search form, this behaviour is sensible: no field is required, an empty se
 |---|---|---|---|---|---|
 | Open the rental listings ("Kiralık") from the home page | 3 × Tab from the address bar (logo → Satılık → Kiralık), then Enter | Yes, a dark outline around "Kiralık" | Yes, left to right | None on this route | No: the first Tab goes straight to the logo |
 
-This simple task worked well. Each Tab moved one step along the menu with a clearly visible outline, and Enter opened the rental listings. The missing piece is a "skip to content" link. The header alone holds about ten links and controls (logo, five menu items, the listing-number box, Giriş Yap, Kayıt Ol, language). Someone who cannot use a mouse has to pass all of them on every new page before reaching the listings, and on the listing page Lighthouse also found buttons and links without names (B7), which a keyboard user reaches but cannot identify. [B6]
+This simple task worked well. Each Tab moved one step along the menu with a clearly visible outline, and Enter opened the rental listings. The missing piece is a "skip to content" link. The header alone holds about ten links and controls (logo, five menu items, the listing-number box, Giriş Yap, Kayıt Ol, language). Someone who cannot use a mouse has to pass all of them on every new page before reaching the listings, and on the listing page Lighthouse also found buttons and links without names (B7), which a blind keyboard user can reach with Tab but cannot identify. [B6]
 
 ### B7. Automated audit (Lighthouse Accessibility)
 
@@ -127,55 +130,56 @@ The issue that matters most to real visitors is the **unnamed controls**. On bot
 
 | Current text or element | Where | Problem | Better text |
 |---|---|---|---|
-| [[TODO]] | | | |
-| [[TODO]] | | | |
-| [[TODO]] | | | |
+| 6 photo links (`popup-img`) and 17 links to `#st` (`fancybox-link`), all without text | Photo gallery of the listing (it has 17 photos) | Images have no `alt` text, so each link is read as just "link" or a long file address | "Fotoğraf 1 / 17 – büyüt" ("Photo 1 of 17 – enlarge") |
+| Share icon (link to addtoany.com) | Next to the price | Icon only, no text or `aria-label` | "Bu ilanı paylaş" ("Share this listing") |
+| Agent logo (link to `/acente-detay/northernland-construction/2673`) | Agent box beside the listing | Logo image without `alt` | "Northern Land Construction – tüm ilanları" ("all listings") |
+| Two buttons (`button-18-copy`, `div-block-354`), Google Play and App Store badges, back-to-top link (`scrollToHome`) | Elsewhere on the page | No text, no label | e.g. "101evler uygulamasını Google Play'den indir", "Sayfanın başına dön" ("Back to top") |
 
-[[TODO: Why vague link text matters, for example for screen-reader users who list all links on a page.]] [B8]
+The same Console check found **32 visible links and buttons with no readable text at all** on the listing page. None used vague words such as "tıkla" or "devamı", so the problem here is not vague text but missing text. Screen-reader users often open a list of all links on a page to jump straight to the one they want. On this page, that list contains 32 entries read as "link", "button" or an image address, 23 of them in the photo gallery. The two empty buttons are the worst case, because a blind visitor cannot tell what pressing them will do. [B8]
 
 ## Part C: Recommendations
 
 ### What works well
 
-1. **[[TODO: Strength 1]]**: [[TODO: what the site does well and why it helps visitors]] [[[TODO: evidence ID]]]
-2. **[[TODO: Strength 2]]**: [[TODO]] [[[TODO: evidence ID]]]
+1. **Secure, tidy addresses.** Every visit ends on HTTPS at one single address, the browser is told to stay on HTTPS (HSTS), and page addresses are short, readable and free of query strings, even for search results. Links are safe to share and easy to understand. [A1, A2]
+2. **Content arrives ready-made, and dead ends are handled.** Listings are built on the server, so the main heading appeared after about 2.5 s even on Slow 4G. Missing pages return a real 404 with a friendly message and onward links instead of a broken page. [A6, B1, A4, B2]
 
 ### The three problems to fix first
 
-**Why this order:** [[TODO: one sentence explaining the ranking]]
+**Why this order:** I ranked the problems by how badly they stop a real visitor from doing the site's main job (finding a home and contacting the agent), and then by how cheap they are to fix.
 
-#### 1. [[TODO: Short problem title]]
-
-| | |
-|---|---|
-| **Problem** | [[TODO: one sentence]] |
-| **Evidence** | [[TODO: e.g. A4, B2]] |
-| **Who it affects** | [[TODO]] |
-| **Fix in plain words** | [[TODO]] |
-| **Effort** | [[TODO: Low / Medium / High]] |
-| **Impact** | [[TODO: Low / Medium / High]] |
-
-#### 2. [[TODO: Short problem title]]
+#### 1. Forms, links and buttons have no names
 
 | | |
 |---|---|
-| **Problem** | [[TODO: one sentence]] |
-| **Evidence** | [[TODO]] |
-| **Who it affects** | [[TODO]] |
-| **Fix in plain words** | [[TODO]] |
-| **Effort** | [[TODO: Low / Medium / High]] |
-| **Impact** | [[TODO: Low / Medium / High]] |
+| **Problem** | None of the 18 form fields on a listing page has a label, and 32 links and buttons have no readable text. |
+| **Evidence** | B5, B8, B7 (scores 74 and 53), A7 (four `h1` headings) |
+| **Who it affects** | Blind and partially sighted visitors using screen readers. Anyone who forgets what a field was for once the placeholder disappears. |
+| **Fix in plain words** | Give every field a visible label, every photo and logo a short description (`alt`), and every icon button a spoken name (`aria-label`). Keep one main heading per page. |
+| **Effort** | Low to Medium (template changes, no redesign) |
+| **Impact** | High: the contact form, the main way to reach an agent, becomes usable for everyone |
 
-#### 3. [[TODO: Short problem title]]
+#### 2. Zooming is blocked on phones
 
 | | |
 |---|---|
-| **Problem** | [[TODO: one sentence]] |
-| **Evidence** | [[TODO]] |
-| **Who it affects** | [[TODO]] |
-| **Fix in plain words** | [[TODO]] |
-| **Effort** | [[TODO: Low / Medium / High]] |
-| **Impact** | [[TODO: Low / Medium / High]] |
+| **Problem** | The page tells mobile browsers not to allow zooming (`maximum-scale=1`). |
+| **Evidence** | B7 (flagged on both pages), A6 (visible in the page source) |
+| **Who it affects** | Visitors with weak eyesight, older visitors, anyone reading small prices and details on a phone |
+| **Fix in plain words** | Delete `maximum-scale=1` from one line in the page header. |
+| **Effort** | Low (one line) |
+| **Impact** | High |
+
+#### 3. Slow first view and heavy extras on mobile
+
+| | |
+|---|---|
+| **Problem** | On a slow connection, visitors see a blank white screen first, and about a third of the 2.5 MB download is advertising and tracking code. |
+| **Evidence** | B1, A3, A5 |
+| **Who it affects** | Visitors on mobile data or weak connections |
+| **Fix in plain words** | Load advertising and tracking scripts after the listing is visible, show a simple placeholder while loading, and let browsers keep images for days instead of 4 hours. |
+| **Effort** | Medium |
+| **Impact** | Medium |
 
 <div class="page-break"></div>
 
