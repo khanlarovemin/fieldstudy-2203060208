@@ -1,0 +1,30 @@
+| ID | File | What it shows | Time and date | Page address |
+|---|---|---|---|---|
+| A1 | evidence/A1-padlock.png | Chrome security popup: "Connection is secure" and "Certificate is valid" | 2026-11-08 18:43 | https://www.101evler.com/ |
+| A1 | evidence/A1-certificate.png | Certificate viewer: issued to, issued by and validity period | 2026-11-08 18:48 | https://www.101evler.com/ |
+| A1 | evidence/A1-http-redirect.png | Network panel (Doc filter) after typing http://101evler.com: 307 internal redirect, 301 to www, then 200 | 2026-11-08 18:54 | https://www.101evler.com/ |
+| A3 | evidence/A3-document-headers.png | Headers of the main document request: URL, method GET, status 200, Cache-Control, Content-Encoding | 2026-11-08 18:57 | https://www.101evler.com/ |
+| A5 | evidence/A5-document-cache.png | Response headers of the main document: Cache-Control and Content-Type | 2026-11-08 18:57 | https://www.101evler.com/ |
+| A1 | evidence/A1-hsts-header.png | Response headers of the main document: Strict-Transport-Security max-age=2592000, Server cloudflare | 2026-11-08 18:57 | https://www.101evler.com/ |
+| A5 | evidence/A5-image-cache.png | Response headers of the image lefkosa-min.webp: Cache-Control max-age=14400, Cf-Cache-Status HIT | 2026-11-08 18:58 | https://www.101evler.com/ |
+| A3 | evidence/A3-size-sorted-private.png | Private window, cache disabled: requests sorted by size, summary bar (92 requests, 2.5 MB transferred, 7.3 MB resources, DOMContentLoaded 1.74 s, Load 3.55 s) | 2026-11-08 19:10 | https://www.101evler.com/ |
+| A3 | evidence/A3-size-sorted-extensions.png | Normal window for comparison: the two largest files (2.9 MB script, 1.6 MB stylesheet, 3–4 ms) come from a browser extension | 2026-11-08 19:05 | https://www.101evler.com/ |
+| A3 | evidence/A3-xhr-preview.png | Private window, Fetch/XHR filter: 8 background requests (analytics and ads), preview of one JSON response | 2026-11-08 19:10 | https://www.101evler.com/ |
+| A4 | evidence/A4-missing-page.png | Made-up address: 404 status in Network and the "page not found" page the visitor sees | 2026-11-08 19:21 | https://www.101evler.com/no-such-page-123 |
+| A2 | evidence/A2-listing-url.png | Listing page in a private window, with its address in the address bar | 2026-11-09 20:22 | https://www.101evler.com/kibris/satilik-emlak/girne-esentepe-daire-289984.html |
+| A6 | evidence/A6-view-source-title.png | Raw page source (View Source): the listing title found in the HTML (95 matches), canonical link and language alternates | 2026-11-09 20:22 | view-source:https://www.101evler.com/kibris/satilik-emlak/girne-esentepe-daire-289984.html |
+| A4 | evidence/A4-missing-page-links.png | Lower part of the 404 page: no search box, only "Popüler kategoriler" and "Popüler şehirler" links; no main menu | 2026-11-09 20:23 | https://www.101evler.com/no-such-page-123 |
+| A7 | evidence/A7-seo-console.png | Console table on the listing page: title, meta description, canonical, lang, number and text of h1 elements, rel="sponsored"/"ugc" links, ad frames | 2026-11-09 20:26 | https://www.101evler.com/kibris/satilik-emlak/girne-esentepe-daire-289984.html |
+| B4 | evidence/B4-empty-search-results.png | Result of pressing "Ara" on the home search form without choosing anything: all homes for sale, "25.083 Sonuç Bulundu", no error message | 2026-11-09 20:53 | https://www.101evler.com/kibris/satilik-konut |
+| B6 | evidence/B6-focus-kiralik.png | Keyboard only: focus outline on the "Kiralık" menu link after pressing Tab from the address bar | 2026-11-09 20:53 | https://www.101evler.com/ |
+| B1 | evidence/B1-slow-4g-metrics.png | Performance panel, Slow 4G and cache disabled: LCP 2.47 s (main heading), CLS 0.02, INP 24 ms | 2026-11-09 20:57 | https://www.101evler.com/ |
+| B3 | evidence/B3-offline-click.png | Network set to Offline, then "Satılık" clicked: Chrome's own "no internet" page, nothing from the site | 2026-11-09 20:59 | https://www.101evler.com/kibris/satilik-konut |
+| B2 | evidence/B2-unknown-listing-number.png | Listing-number search for 99999999: "404 – Bu ilan artık yayında değil" page with the normal header and menu | 2026-11-09 21:00 | https://www.101evler.com/kibris/emlak/index?property=99999999 |
+| B7 | evidence/B7-home-score.png | Lighthouse Accessibility, home page: score 74, first flagged issues (names and labels) | 2026-11-09 21:00 | https://www.101evler.com/ |
+| B7 | evidence/B7-home-issues-1.png | Lighthouse, home page: names and labels, zoom disabled (maximum-scale), no main landmark | 2026-11-09 21:01 | https://www.101evler.com/ |
+| B7 | evidence/B7-home-issues-2.png | Lighthouse, home page: prohibited ARIA attributes, low colour contrast, heading order | 2026-11-09 21:01 | https://www.101evler.com/ |
+| B7 | evidence/B7-listing-score.png | Lighthouse Accessibility, listing page: score 53, ARIA issues | 2026-11-09 21:02 | https://www.101evler.com/kibris/satilik-emlak/girne-esentepe-daire-289984.html |
+| B7 | evidence/B7-listing-issues.png | Lighthouse, listing page: buttons, images, form fields, selects, iframes and links without names; zoom disabled; no main landmark | 2026-11-09 21:03 | https://www.101evler.com/kibris/satilik-emlak/girne-esentepe-daire-289984.html |
+| B5 | evidence/B5-form-fields.png | Console table of every form field on the listing page: visible or not, connected label, aria-label, placeholder (fields 0–21) | 2026-11-09 21:14 | https://www.101evler.com/kibris/satilik-emlak/girne-esentepe-daire-289984.html |
+| B8 | evidence/B8-empty-links-1.png | End of the form-field table (fields 15–30), then the start of the table of visible links and buttons with no readable text (rows 0–7) | 2026-11-09 21:14 | https://www.101evler.com/kibris/satilik-emlak/girne-esentepe-daire-289984.html |
+| B8 | evidence/B8-empty-links-2.png | Rest of the links and buttons with no readable text (rows 5–31): 17 "#st" gallery links, share link, two buttons, app-store links, back-to-top link | 2026-11-09 21:14 | https://www.101evler.com/kibris/satilik-emlak/girne-esentepe-daire-289984.html |

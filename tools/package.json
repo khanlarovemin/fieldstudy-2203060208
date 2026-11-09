@@ -1,0 +1,9 @@
+{
+  "name": "fieldstudy-tools",
+  "private": true,
+  "type": "module",
+  "description": "Builds the report PDFs from the Markdown sources in ../source",
+  "dependencies": {
+    "marked": "^18.1.3"
+  }
+}
