@@ -61,16 +61,18 @@ I opened the listing page `/kibris/satilik-emlak/girne-esentepe-daire-289984.htm
 
 ### A7. SEO basics
 
+Checked on the listing page `/kibris/satilik-emlak/girne-esentepe-daire-289984.html`.
+
 | Item | Found? | Value or note |
 |---|---|---|
-| Page title | | [[TODO]] |
-| Meta description | | [[TODO]] |
-| Canonical link | | [[TODO]] |
-| `lang` attribute | | [[TODO]] |
-| Number of `h1` elements | | [[TODO]] |
-| `rel="sponsored"` / `rel="ugc"` | | [[TODO: only relevant if the page has adverts or user comments]] |
+| Page title | Yes | "CASA DEL MARE LOFT 1+1 BAHÇE KATI – £199,900 – İlan Numarası #289984 \| 101evler.com" (83 characters) |
+| Meta description | Yes, weak | "Satılık Daire - Girne, Esentepe, Kuzey Kıbrıs #289984" (about 54 characters: only category, place and number) |
+| Canonical link | Yes | Points to the page's own address |
+| `lang` attribute | Yes | `TR` (Turkish) |
+| Number of `h1` elements | 4 | The listing title, plus "Mesaj Gönder", "Hatalı İlan Bildirim Formu" and "Bana Özel Not Ekle" |
+| `rel="sponsored"` / `rel="ugc"` | 0 / 0 | No ad frames were on the page at the time, although Google's ad script ran (messages from `pubads_impl.js` in the console), so there was no paid link to mark |
 
-[[TODO: What is missing or wrong, and what it means for how the site appears in search results or to screen-reader users.]] [A7]
+The basics are in place. Every item exists, the canonical link points to the page itself, and the raw source also lists the same listing in six language versions (see A6), which helps search engines show each visitor the right one. Two things are weak. First, the meta description, the grey text Google often shows under the title in results, is generated from the category and place and gives no reason to click: no price, size or feature, and only about 54 of the roughly 155 characters that can be shown. The title is the opposite: at 83 characters it is longer than results usually display, so the listing number and the site name at the end would be cut off. Second, the page has four `h1` headings. Only the first names the listing; the other three are form titles. Screen-reader users often jump from heading to heading to understand a page, and four "main" headings blur which one is the subject. The form titles should be `h2` or lower. [A7]
 
 ## Part B: The experience
 
