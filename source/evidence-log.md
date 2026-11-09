@@ -10,3 +10,4 @@
 | A3 | evidence/A3-size-sorted-private.png | Private window, cache disabled: requests sorted by size, summary bar (92 requests, 2.5 MB transferred, 7.3 MB resources, DOMContentLoaded 1.74 s, Load 3.55 s) | 2026-11-08 19:10 | https://www.101evler.com/ |
 | A3 | evidence/A3-size-sorted-extensions.png | Normal window for comparison: the two largest files (2.9 MB script, 1.6 MB stylesheet, 3–4 ms) come from a browser extension | 2026-11-08 19:05 | https://www.101evler.com/ |
 | A3 | evidence/A3-xhr-preview.png | Private window, Fetch/XHR filter: 8 background requests (analytics and ads), preview of one JSON response | 2026-11-08 19:10 | https://www.101evler.com/ |
+| A4 | evidence/A4-missing-page.png | Made-up address: 404 status in Network and the "page not found" page the visitor sees | 2026-11-08 19:21 | https://www.101evler.com/no-such-page-123 |

@@ -17,15 +17,17 @@ Typing `http://101evler.com` ended on `https://www.101evler.com/`. The Network p
 
 ### A2. URL structure
 
-| # | URL | HTTPS | Short and readable | Lowercase | Hyphens, not underscores | Few query parameters | Score |
-|---|---|---|---|---|---|---|---|
-| 1 | `[[TODO]]` | | | | | | /5 |
-| 2 | `[[TODO]]` | | | | | | /5 |
-| 3 | `[[TODO]]` | | | | | | /5 |
-| 4 | `[[TODO]]` | | | | | | /5 |
-| 5 | `[[TODO]]` | | | | | | /5 |
+All five addresses start with `https://www.101evler.com`.
 
-[[TODO: The pattern across the five URLs (which rule fails most, and on which kind of page), and what that means for someone reading, sharing or remembering a link.]] [A2]
+| # | Page | Path | HTTPS | Short and readable | Lowercase | Hyphens, not underscores | Few query parameters | Score |
+|---|---|---|---|---|---|---|---|---|
+| 1 | Homes for sale (menu) | `/kibris/satilik-konut` | ✓ | ✓ | ✓ | ✓ | ✓ none | 5/5 |
+| 2 | Search result: Girne | `/kibris/satilik-konut/girne` | ✓ | ✓ | ✓ | ✓ | ✓ none | 5/5 |
+| 3 | One listing | `/kibris/satilik-emlak/girne-girne-merkez-daire-584797.html` | ✓ | Partly | ✓ | ✓ | ✓ none | 4/5 |
+| 4 | Estate agents | `/firmalar` | ✓ | ✓ | ✓ | ✓ | ✓ none | 5/5 |
+| 5 | Buying guide | `/kktc-emlak-satin-alma-rehberi` | ✓ | ✓ | ✓ | ✓ | ✓ none | 5/5 |
+
+The addresses are clean and consistent. All five use HTTPS, lowercase letters and hyphens, and none has a query string. Even a search result is a plain path (`/kibris/satilik-konut/girne`, "Cyprus / homes for sale / Girne") rather than something like `?city=12&type=3`, so the address alone tells a reader what the page shows, and it stays short when shared in a message. Turkish letters are written without accents (`kibris` for Kıbrıs, `satin` for satın), which avoids unreadable codes such as `%C4%B1` when a link is pasted. The weakest address is the listing page: it repeats the town (`girne-girne-merkez`), ends in an ID number and an old-style `.html`, and sits under `satilik-emlak` although the list it came from is `satilik-konut`. The number is needed to keep each listing unique, so this is a minor point. [A2]
 
 ### A3. One request, closely
 
@@ -40,8 +42,7 @@ The home page is an ordinary `GET` answered with `200` and HTML. It is compresse
 
 ### A4. A page that does not exist
 
-[[TODO: The address you visited, the status code in Network, and what the visitor sees: the exact heading or message, and any search box or links back.]]
-[[TODO: Is it a real 404 or a soft 404? What does that mean for a lost visitor and for search engines?]] [A4]
+Visiting `https://www.101evler.com/no-such-page-123` returned a real **404** status, not a soft 404, and the tab title reads "404 | Sayfa bulunamadı". The visitor sees a large "404", the heading "Aradığınız sayfa bulunamadı" ("The page you are looking for was not found"), and a sentence saying that the page may have been deleted or moved and that they can go back to the home page or "continue searching below". There is also an "Anasayfaya dön" ("Back to home page") button. [[TODO: is there a search box below the button?]] The page is light (9 requests, 54 kB). Because the status is a real 404, search engines drop dead links instead of listing the error page, which matters on a site where listings are removed every day. One weakness: the main menu (Satılık, Kiralık, Projeler …) is missing from this page. A visitor arriving from an old listing link therefore has the home page as their only way forward. [A4]
 
 ### A5. Caching
 
