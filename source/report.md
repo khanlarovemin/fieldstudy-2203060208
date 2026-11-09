@@ -23,11 +23,11 @@ All five addresses start with `https://www.101evler.com`.
 |---|---|---|---|---|---|---|---|---|
 | 1 | Homes for sale (menu) | `/kibris/satilik-konut` | ✓ | ✓ | ✓ | ✓ | ✓ none | 5/5 |
 | 2 | Search result: Girne | `/kibris/satilik-konut/girne` | ✓ | ✓ | ✓ | ✓ | ✓ none | 5/5 |
-| 3 | One listing | `/kibris/satilik-emlak/girne-girne-merkez-daire-584797.html` | ✓ | Partly | ✓ | ✓ | ✓ none | 4/5 |
+| 3 | One listing | `/kibris/satilik-emlak/girne-esentepe-daire-289984.html` | ✓ | Partly | ✓ | ✓ | ✓ none | 4/5 |
 | 4 | Estate agents | `/firmalar` | ✓ | ✓ | ✓ | ✓ | ✓ none | 5/5 |
 | 5 | Buying guide | `/kktc-emlak-satin-alma-rehberi` | ✓ | ✓ | ✓ | ✓ | ✓ none | 5/5 |
 
-The addresses are clean and consistent. All five use HTTPS, lowercase letters and hyphens, and none has a query string. Even a search result is a plain path (`/kibris/satilik-konut/girne`, "Cyprus / homes for sale / Girne") rather than something like `?city=12&type=3`, so the address alone tells a reader what the page shows, and it stays short when shared in a message. Turkish letters are written without accents (`kibris` for Kıbrıs, `satin` for satın), which avoids unreadable codes such as `%C4%B1` when a link is pasted. The weakest address is the listing page: it repeats the town (`girne-girne-merkez`), ends in an ID number and an old-style `.html`, and sits under `satilik-emlak` although the list it came from is `satilik-konut`. The number is needed to keep each listing unique, so this is a minor point. [A2]
+The addresses are clean and consistent. All five use HTTPS, lowercase letters and hyphens, and none has a query string. Even a search result is a plain path (`/kibris/satilik-konut/girne`, "Cyprus / homes for sale / Girne") rather than something like `?city=12&type=3`, so the address alone tells a reader what the page shows, and it stays short when shared in a message. Turkish letters are written without accents (`kibris` for Kıbrıs, `satin` for satın), which avoids unreadable codes such as `%C4%B1` when a link is pasted. The weakest address is the listing page: it ends in an ID number and an old-style `.html`, and sits under `satilik-emlak` although the list of homes for sale is under `satilik-konut`. Another listing I opened (`girne-girne-merkez-daire-584797.html`) also repeats the town name. The number is needed to keep each listing unique, so these are minor points. [A2]
 
 ### A3. One request, closely
 
@@ -42,7 +42,7 @@ The home page is an ordinary `GET` answered with `200` and HTML. It is compresse
 
 ### A4. A page that does not exist
 
-Visiting `https://www.101evler.com/no-such-page-123` returned a real **404** status, not a soft 404, and the tab title reads "404 | Sayfa bulunamadı". The visitor sees a large "404", the heading "Aradığınız sayfa bulunamadı" ("The page you are looking for was not found"), and a sentence saying that the page may have been deleted or moved and that they can go back to the home page or "continue searching below". There is also an "Anasayfaya dön" ("Back to home page") button. [[TODO: is there a search box below the button?]] The page is light (9 requests, 54 kB). Because the status is a real 404, search engines drop dead links instead of listing the error page, which matters on a site where listings are removed every day. One weakness: the main menu (Satılık, Kiralık, Projeler …) is missing from this page. A visitor arriving from an old listing link therefore has the home page as their only way forward. [A4]
+Visiting `https://www.101evler.com/no-such-page-123` returned a real **404** status, not a soft 404, and the tab title reads "404 | Sayfa bulunamadı". The visitor sees a large "404", the heading "Aradığınız sayfa bulunamadı" ("The page you are looking for was not found") and the sentence "Sayfa silinmiş veya taşınmış olabilir. Anasayfaya dönebilir veya aşağıdan aramaya devam edebilirsiniz." ("The page may have been deleted or moved. You can go back to the home page or continue searching below."), followed by an "Anasayfaya dön" ("Back to home page") button. Further down are links to popular categories (Satılık konut, Kiralık konut, Projeler, Satılık emlak) and popular towns (Girne, Lefkoşa, Mağusa, İskele, Güzelyurt). The page is light (9 requests, 54 kB). Because the status is a real 404, search engines drop dead links instead of listing the error page, which matters on a site where listings are removed every day. Two small weaknesses remain. The text promises a search "below", but there is no search box, only fixed links. The site's usual header and main menu are also missing, so a visitor who arrives from an old listing link loses the familiar way around the site. [A4]
 
 ### A5. Caching
 
@@ -55,8 +55,9 @@ This split suits a property site: listings and prices change all the time, so th
 
 ### A6. Where the page is built
 
-[[TODO: What the raw source contains (is a sentence of the main text there?), compared with the Elements panel; optionally what remains with JavaScript disabled.]]
-[[TODO: Your classification (server-rendered, browser-rendered or mixed) and the evidence that justifies it.]] [A6]
+I opened the listing page `/kibris/satilik-emlak/girne-esentepe-daire-289984.html` and then its raw source (View Source), which is the HTML exactly as the server sends it, before any JavaScript runs. I searched the source for the listing title "CASA DEL MARE LOFT 1+1 BAHÇE KATI", the main heading the visitor sees on the page, and Chrome found 95 matches. The first is in the `<title>` element together with the price (£199,900) and the listing number. The raw source also already contains the canonical link and links to the same listing in six language versions.
+
+**Classification: server-rendered.** The server sends the finished listing (title, price, number) in the HTML, so the content does not depend on JavaScript. Scripts such as Google Tag Manager, which is visible at the top of the source, are added on top for tracking. This is good for visitors on slow phones and for search engines, because both get the listing without having to run any code. [A6]
 
 ### A7. SEO basics
 

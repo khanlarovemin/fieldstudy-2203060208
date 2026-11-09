@@ -11,3 +11,6 @@
 | A3 | evidence/A3-size-sorted-extensions.png | Normal window for comparison: the two largest files (2.9 MB script, 1.6 MB stylesheet, 3–4 ms) come from a browser extension | 2026-11-08 19:05 | https://www.101evler.com/ |
 | A3 | evidence/A3-xhr-preview.png | Private window, Fetch/XHR filter: 8 background requests (analytics and ads), preview of one JSON response | 2026-11-08 19:10 | https://www.101evler.com/ |
 | A4 | evidence/A4-missing-page.png | Made-up address: 404 status in Network and the "page not found" page the visitor sees | 2026-11-08 19:21 | https://www.101evler.com/no-such-page-123 |
+| A2 | evidence/A2-listing-url.png | Listing page in a private window, with its address in the address bar | 2026-11-09 20:22 | https://www.101evler.com/kibris/satilik-emlak/girne-esentepe-daire-289984.html |
+| A6 | evidence/A6-view-source-title.png | Raw page source (View Source): the listing title found in the HTML (95 matches), canonical link and language alternates | 2026-11-09 20:22 | view-source:https://www.101evler.com/kibris/satilik-emlak/girne-esentepe-daire-289984.html |
+| A4 | evidence/A4-missing-page-links.png | Lower part of the 404 page: no search box, only "Popüler kategoriler" and "Popüler şehirler" links; no main menu | 2026-11-09 20:23 | https://www.101evler.com/no-such-page-123 |
