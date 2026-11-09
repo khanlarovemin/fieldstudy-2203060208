@@ -27,7 +27,7 @@ I used www.101evler.com the way an ordinary visitor would: on a computer, on a s
 
 ### 3. A blank screen on slow connections
 
-**What visitors experience:** On a slow mobile connection, the page stays white for about two and a half seconds. Then a third of what it downloads is advertising and tracking code, not homes.
+**What visitors experience:** On a slow mobile connection, the page stays white for about two and a half seconds, and about a third of what it downloads is advertising and tracking code, not homes.
 **Why it matters to you:** Some visitors leave before anything appears, and every visit uses more of their mobile data than needed.
 **What to ask your web developer:** "Please load the advertising and statistics scripts after the listings appear, show something while the page loads, and let browsers keep photos for longer."
 
