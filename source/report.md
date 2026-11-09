@@ -78,8 +78,8 @@ The basics are in place. Every item exists, the canonical link points to the pag
 
 ### B1. Loading state
 
-I set the Performance panel to **Slow 4G** with the cache disabled and reloaded the home page. Chrome's live metrics reported a Largest Contentful Paint of **2.47 s**: the biggest element, the main `h1` heading, was on screen after about two and a half seconds. Layout shift was **0.02**, so the page hardly jumped while images arrived, and the first click responded in 24 ms. Chrome rates all three values as "good". [[TODO: one sentence from you: what did you see first while it loaded (white page, menu and heading, grey boxes?), and when did the photos appear?]]
-Because the page is built on the server (A6), a visitor on a slow connection gets the heading and menu early instead of a blank screen or a spinner. The weak point is everything after that: the 2.5 MB download (A3), a third of it advertising and tracking code, keeps the phone busy and uses mobile data long after the useful part is visible. [B1]
+I set the Performance panel to **Slow 4G** with the cache disabled and reloaded the home page. Chrome's live metrics reported a Largest Contentful Paint of **2.47 s**: the biggest element, the main `h1` heading, was on screen after about two and a half seconds. Layout shift was **0.02**, so the page hardly jumped while images arrived, and the first click responded in 24 ms. Chrome rates all three values as "good". While loading, I first saw a plain white screen, with no spinner, placeholder or message.
+For about two and a half seconds, a visitor on a slow connection cannot tell whether the site is loading or broken, and some will press Back. Once the heading appears, the page is usable because it is built on the server (A6). Even so, the 2.5 MB download (A3), a third of it advertising and tracking code, keeps the phone busy and uses mobile data long after the useful part is visible. [B1]
 
 ### B2. Empty state
 
@@ -110,9 +110,9 @@ For a search form, this behaviour is sensible: no field is required, an empty se
 
 | Task | Keys and steps | Focus visible? | Order logical? | Keyboard trap? | Skip link? |
 |---|---|---|---|---|---|
-| Open the rental listings ("Kiralık") from the home page | [[TODO: N]] × Tab from the address bar, then Enter | Yes, a dark outline around "Kiralık" | [[TODO]] | [[TODO]] | [[TODO]] |
+| Open the rental listings ("Kiralık") from the home page | 3 × Tab from the address bar (logo → Satılık → Kiralık), then Enter | Yes, a dark outline around "Kiralık" | Yes, left to right | None on this route | No: the first Tab goes straight to the logo |
 
-[[TODO: after your answer]] [B6]
+This simple task worked well. Each Tab moved one step along the menu with a clearly visible outline, and Enter opened the rental listings. The missing piece is a "skip to content" link. The header alone holds about ten links and controls (logo, five menu items, the listing-number box, Giriş Yap, Kayıt Ol, language). Someone who cannot use a mouse has to pass all of them on every new page before reaching the listings, and on the listing page Lighthouse also found buttons and links without names (B7), which a keyboard user reaches but cannot identify. [B6]
 
 ### B7. Automated audit (Lighthouse Accessibility)
 
